@@ -1,11 +1,19 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "index.js",
+  "engines": {
+    "node": ">=11.0.0"
+  },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "lint": "yarn lint:ts",
+    "lint:stats": "yarn lint:ts --format node_modules/eslint-stats/byError.js",
+    "lint:ts": "eslint . --ext .ts --ext .tsx --max-warnings 0 --format codeframe",
+    "pretty": "prettier --write '**/*.{css,scss,js,json,md,ts,tsx,yml}'",
+    "validate": "tsc --noEmit"
   },
   "dependencies": {
     "expo": "^33.0.0",
@@ -18,7 +26,52 @@
     "@types/react": "~16.8.0",
     "@types/react-native": "^0.57.0",
     "babel-preset-expo": "^5.0.0",
+    "eslint": "^5.0.0",
+    "eslint-plugin-shopify": "^28.0.0",
+    "eslint-stats": "^1.0.0",
+    "husky": "^2.0.0",
+    "prettier": "^1.0.0",
+    "pretty-quick": "^1.0.0",
     "typescript": "~3.5.0"
+  },
+  "resolutions": {
+    "typescript-estree": "18.1.0",
+    "typescript-eslint-parser": "^22.0.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:shopify/react",
+      "plugin:shopify/typescript",
+      "plugin:shopify/jest",
+      "plugin:shopify/prettier"
+    ],
+    "settings": {
+      "react": {
+        "version": "16.9"
+      }
+    },
+    "rules": {
+      "no-empty-pattern": "off"
+    },
+    "overrides": [
+      {
+        "parserOptions": {
+          "project": "./tsconfig.json"
+        },
+        "files": [
+          "*.ts",
+          "*.tsx"
+        ]
+      }
+    ]
+  },
+  "eslintIgnore": [
+    "/.expo"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "private": true
 }

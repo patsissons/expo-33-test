@@ -1,0 +1,31 @@
+{
+  "window.title": "${activeEditorMedium}${separator}${rootName}",
+  "javascript.validate.enable": false,
+  "css.validate": false,
+  "scss.validate": false,
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    ".dev": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "build": true,
+    "docs": true
+  },
+  "editor.formatOnSave": true,
+  "prettier.stylelintIntegration": true,
+  "prettier.eslintIntegration": true,
+  "eslint.validate": [
+    {"language": "javascript", "autoFix": true},
+    {"language": "javascriptreact", "autoFix": true},
+    {"language": "typescript", "autoFix": true},
+    {"language": "typescriptreact", "autoFix": true}
+  ]
+}
