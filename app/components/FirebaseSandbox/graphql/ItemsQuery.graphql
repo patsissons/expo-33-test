@@ -1,0 +1,6 @@
+query ItemsQuery {
+  items @query(rootType: "collection", subscribe: true) {
+    id
+    key
+  }
+}

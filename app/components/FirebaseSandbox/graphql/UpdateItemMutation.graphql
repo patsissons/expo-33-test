@@ -1,0 +1,11 @@
+fragment Input on Item {
+  id
+  key
+}
+
+mutation UpdateItem($input: Input!) {
+  items(input: $input)
+    @mutation(rootType: "collection", mutationType: "update") {
+    id
+  }
+}

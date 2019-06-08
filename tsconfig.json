@@ -15,5 +15,6 @@
     "paths": {
       "*": ["*", "packages/*", "app/*"]
     }
-  }
+  },
+  "include": ["app", "config", "packages"]
 }
